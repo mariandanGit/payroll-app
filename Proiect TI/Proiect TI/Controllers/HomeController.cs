@@ -13,9 +13,9 @@ namespace Proiect_TI.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ActualizareDate()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Pagina de actualizare de date.";
 
             return View();
         }
