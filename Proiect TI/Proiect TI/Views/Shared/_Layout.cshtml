@@ -6,7 +6,6 @@
     <title>@ViewBag.Title - Aplicatie salarizare</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -25,19 +24,19 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introducere date <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Actualizare date", "ActualizareDate", "Home")</li>
-                            <li><a href="#">Adaugare angajati</a></li>
-                            <li><a href="#">Stergere angajati</a></li>
-                            <li><a href="#">Calcul salarii</a></li>
+                            <li>@Html.ActionLink("Adaugare angajati", "AdaugareAngajati", "Home")</li>
+                            <li>@Html.ActionLink("Stergere angajati", "StergereAngajati", "Home")</li>
+                            <li>@Html.ActionLink("Calcul salarii", "CalculSalarii", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Tiparire <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Stat plata</a></li>
-                            <li><a href="#">Fluturasi</a></li>
+                            <li>@Html.ActionLink("Stat plata", "StatPlata", "Home")</li>
+                            <li>@Html.ActionLink("Fluturasi", "Fluturasi", "Home")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Procente", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Procente", "ModificareProcente", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

@@ -15,14 +15,44 @@ namespace Proiect_TI.Controllers
 
         public ActionResult ActualizareDate()
         {
-            ViewBag.Message = "Pagina de actualizare de date.";
+            ViewBag.Message = "";
 
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult AdaugareAngajati()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "";
+
+            return View();
+        }
+        public ActionResult StergereAngajati()
+        {
+            ViewBag.Message = "";
+
+            return View();
+        }
+        public ActionResult CalculSalarii()
+        {
+            ViewBag.Message = "";
+
+            return View();
+        }
+        public ActionResult StatPlata()
+        {
+            ViewBag.Message = "";
+
+            return View();
+        }
+        public ActionResult Fluturasi()
+        {
+            ViewBag.Message = "";
+
+            return View();
+        }
+        public ActionResult ModificareProcente()
+        {
+            ViewBag.Message = "";
 
             return View();
         }
