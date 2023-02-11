@@ -19,14 +19,13 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Acasa", "Index", "Home")</li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introducere date <b class="caret"></b></a>
                         <ul class="dropdown-menu">
-                            <li>@Html.ActionLink("Actualizare date", "ActualizareDate", "Home")</li>
                             <li>@Html.ActionLink("Adaugare angajati", "AdaugareAngajati", "Home")</li>
                             <li>@Html.ActionLink("Stergere angajati", "StergereAngajati", "Home")</li>
-                            <li>@Html.ActionLink("Calcul salarii", "CalculSalarii", "Home")</li>
+                            <li>@Html.ActionLink("Actualizare date", "ActualizareDate", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -46,7 +45,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Aplicatie salarizare</p>
         </footer>
     </div>
 

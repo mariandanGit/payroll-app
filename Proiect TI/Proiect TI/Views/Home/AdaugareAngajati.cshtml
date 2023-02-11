@@ -3,5 +3,50 @@
     ViewBag.Title = "AdaugareAngajati";
 }
 
-<h2>AdaugareAngajati</h2>
-
+<h2>Adaugare angajati</h2>
+<div class="container-fluid">
+    <div class="row align-center">
+        <div class="col-md-6">
+            <form id="employee-form" role="form">
+                <div class="form-group">
+                    <label for="nume">Nume:</label>
+                    <input type="text" class="form-control" id="nume">
+                </div>
+                <div class="form-group">
+                    <label for="prenume">Prenume:</label>
+                    <input type="text" class="form-control" id="prenume">
+                </div>
+                <div class="form-group">
+                    <label for="functie">Functie:</label>
+                    <input type="text" class="form-control" id="functie">
+                </div>
+                <div class="form-group">
+                    <label for="salariu">Salariu de baza:</label>
+                    <input type="number" class="form-control" id="salariu">
+                </div>
+                <div class="form-group">
+                    <label for="spor">Spor:</label>
+                    <input type="number" class="form-control" id="spor">
+                </div>
+                <div class="form-group">
+                    <label for="premii">Premii brute:</label>
+                    <input type="number" class="form-control" id="premii">
+                </div>
+                <div class="form-group">
+                    <label for="retineri">Retineri:</label>
+                    <input type="number" class="form-control" id="retineri">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" class="form-control-file" id="exampleInputFile" />
+                </div>
+                <div class="form-group" style="justify-content:center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6 text-center">
+            <img class="vector-images" alt="Add emplyee image" src="~/Images/add_emplyee.jpg" />
+        </div>
+    </div>
+</div>
