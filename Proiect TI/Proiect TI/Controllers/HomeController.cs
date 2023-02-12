@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data;
+using Oracle.ManagedDataAccess.Client;
 
 namespace Proiect_TI.Controllers
 {
@@ -10,12 +12,22 @@ namespace Proiect_TI.Controllers
     {
         public ActionResult Index()
         {
-            return View();
-        }
+            string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+            OracleConnection connection = new OracleConnection(connectionString);
 
-        public ActionResult ActualizareDate()
-        {
-            ViewBag.Message = "";
+            try
+            {
+                connection.Open();
+                ViewBag.Message = "Connection successful!";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Message = "Connection failed: " + ex.Message;
+            }
+            finally
+            {
+                connection.Close();
+            }
 
             return View();
         }
@@ -26,13 +38,7 @@ namespace Proiect_TI.Controllers
 
             return View();
         }
-        public ActionResult StergereAngajati()
-        {
-            ViewBag.Message = "";
-
-            return View();
-        }
-        public ActionResult CalculSalarii()
+        public ActionResult GestionareAngajati()
         {
             ViewBag.Message = "";
 

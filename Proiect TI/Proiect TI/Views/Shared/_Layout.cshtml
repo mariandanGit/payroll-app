@@ -6,6 +6,8 @@
     <title>@ViewBag.Title - Aplicatie salarizare</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Libraries/tabulator-tables/dist/css/tabulator.min.css" rel="stylesheet" />
+    <script src="~/Libraries/tabulator-tables/dist/js/tabulator.min.js"></script>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,8 +26,7 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Introducere date <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>@Html.ActionLink("Adaugare angajati", "AdaugareAngajati", "Home")</li>
-                            <li>@Html.ActionLink("Stergere angajati", "StergereAngajati", "Home")</li>
-                            <li>@Html.ActionLink("Actualizare date", "ActualizareDate", "Home")</li>
+                            <li>@Html.ActionLink("Gestionare angajati", "GestionareAngajati", "Home")</li>
                         </ul>
                     </li>
                     <li class="dropdown">
@@ -35,7 +36,7 @@
                             <li>@Html.ActionLink("Fluturasi", "Fluturasi", "Home")</li>
                         </ul>
                     </li>
-                    <li>@Html.ActionLink("Procente", "ModificareProcente", "Home")</li>
+                    <li>@Html.ActionLink("Modificare procente", "ModificareProcente", "Home")</li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>
@@ -52,5 +53,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+    <script src="~/Scripts/employee-table.js"></script>
 </body>
 </html>

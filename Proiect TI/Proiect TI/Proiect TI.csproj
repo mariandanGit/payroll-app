@@ -47,10 +47,42 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Oracle.ManagedDataAccess, Version=4.122.19.1, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\..\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\IDE\Extensions\mhmrznev.3o1\Assemblies\DataProviders\Oracle.ManagedDataAccess.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.6.0.0\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.6.0.0\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -194,17 +226,203 @@
     <Content Include="Images\add_emplyee.jpg" />
     <Content Include="Images\delete_employee.jpg" />
     <Content Include="Images\home.jpg" />
+    <Content Include="Libraries\tabulator-tables\.eslintrc.js" />
+    <Content Include="Libraries\tabulator-tables\build\Bundler.js" />
+    <Content Include="Libraries\tabulator-tables\build\rollup.js" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap3.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap3.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap4.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap4.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap5.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap5.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bulma.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bulma.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_materialize.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_materialize.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_midnight.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_midnight.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_modern.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_modern.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_semanticui.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_semanticui.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_simple.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_simple.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_site.css" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_site.min.css" />
+    <Content Include="Libraries\tabulator-tables\dist\js\jquery_wrapper.js" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator.js" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator.min.js" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator_esm.js" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator_esm.min.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\builds\esm.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\builds\jquery_wrapper.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\builds\usd.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\cell\Cell.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\cell\CellComponent.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\ColumnManager.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\column\Column.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\column\ColumnComponent.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\column\defaults\options.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\CoreFeature.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\defaults\options.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\FooterManager.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\Module.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\modules\core.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\modules\optional.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\rendering\Renderer.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\rendering\renderers\BasicHorizontal.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\rendering\renderers\BasicVertical.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\rendering\renderers\VirtualDomHorizontal.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\rendering\renderers\VirtualDomVertical.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\RowManager.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\row\PseudoRow.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\row\Row.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\row\RowComponent.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\Tabulator.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\TabulatorFull.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\Alert.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\ComponentFunctionBinder.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\DataLoader.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\DeprecationAdvisor.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\ExternalEventBus.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\Helpers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\InteractionMonitor.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\InternalEventBus.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\ModuleBinder.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\OptionsList.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\Popup.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\core\tools\TableRegistry.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Accessor\Accessor.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Accessor\defaults\accessors.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Ajax\Ajax.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Ajax\defaults\config.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Ajax\defaults\contentTypeFormatters.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Ajax\defaults\loaderPromise.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Ajax\defaults\urlGenerator.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Clipboard\Clipboard.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Clipboard\defaults\pasteActions.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Clipboard\defaults\pasteParsers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ColumnCalcs\CalcComponent.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ColumnCalcs\ColumnCalcs.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ColumnCalcs\defaults\calculations.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Comms\Comms.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\DataTree\DataTree.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\csv.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\html.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\json.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\jsonLines.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\pdf.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\defaults\downloaders\xlsx.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Download\Download.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\autocomplete.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\date.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\datetime.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\input.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\list.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\number.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\progress.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\range.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\select.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\star.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\textarea.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\tickCross.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\defaults\editors\time.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\Edit.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\inputMask.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Edit\List.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Export\Export.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Export\ExportColumn.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Export\ExportRow.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Filter\defaults\filters.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Filter\Filter.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\buttonCross.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\buttonTick.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\color.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\datetime.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\datetimediff.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\handle.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\html.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\image.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\link.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\lookup.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\money.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\plaintext.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\progress.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\responsiveCollapse.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\rownum.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\rowSelection.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\star.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\textarea.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\tickCross.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\defaults\formatters\traffic.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Format\Format.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\FrozenColumns\FrozenColumns.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\FrozenRows\FrozenRows.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\GroupRows\Group.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\GroupRows\GroupComponent.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\GroupRows\GroupRows.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\History\defaults\redoers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\History\defaults\undoers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\History\History.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\HtmlTableImport\HtmlTableImport.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Import\defaults\importers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Import\defaults\importers\array.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Import\defaults\importers\csv.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Import\defaults\importers\json.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Import\Import.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Interaction\Interaction.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Keybindings\defaults\actions.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Keybindings\defaults\bindings.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Keybindings\Keybindings.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\defaults\modes.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\defaults\modes\fitColumns.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\defaults\modes\fitData.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\defaults\modes\fitDataGeneral.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\defaults\modes\fitDataStretch.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Layout\Layout.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Localize\defaults\langs.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Localize\Localize.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Menu\Menu.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\MoveColumns\MoveColumns.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\MoveRows\MoveRows.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Mutator\defaults\mutators.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Mutator\Mutator.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Page\defaults\pageCounters.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Page\defaults\pageCounters\pages.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Page\defaults\pageCounters\rows.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Page\Page.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Persistence\defaults\readers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Persistence\defaults\writers.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Persistence\Persistence.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Popup\Popup.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Print\Print.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ReactiveData\ReactiveData.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ResizeColumns\ResizeColumns.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ResizeRows\ResizeRows.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ResizeTable\ResizeTable.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\ResponsiveLayout\ResponsiveLayout.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\SelectRow\SelectRow.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\alphanum.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\array.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\boolean.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\date.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\datetime.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\exists.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\number.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\string.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\defaults\sorters\time.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Sort\Sort.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Tooltip\Tooltip.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Validate\defaults\validators.js" />
+    <Content Include="Libraries\tabulator-tables\src\js\modules\Validate\Validate.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\index.js.flow" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -213,7 +431,69 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Libraries\tabulator-tables\.babelrc.json" />
+    <Content Include="Libraries\tabulator-tables\.editorconfig" />
+    <Content Include="Libraries\tabulator-tables\.eslintignore" />
+    <Content Include="Libraries\tabulator-tables\.github\ISSUE_TEMPLATE\bug_report.md" />
+    <Content Include="Libraries\tabulator-tables\.github\ISSUE_TEMPLATE\documentation.md" />
+    <Content Include="Libraries\tabulator-tables\.github\ISSUE_TEMPLATE\feature_request.md" />
+    <Content Include="Libraries\tabulator-tables\.github\ISSUE_TEMPLATE\question.md" />
+    <Content Include="Libraries\tabulator-tables\.github\workflows\bad-files-check.yml" />
+    <Content Include="Libraries\tabulator-tables\.github\workflows\lint-and-test.yml" />
+    <Content Include="Libraries\tabulator-tables\bower.json" />
+    <Content Include="Libraries\tabulator-tables\CODE_OF_CONDUCT.md" />
+    <Content Include="Libraries\tabulator-tables\CONTRIBUTING.md" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap3.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap3.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap4.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap4.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap5.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bootstrap5.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bulma.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_bulma.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_materialize.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_materialize.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_midnight.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_midnight.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_modern.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_modern.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_semanticui.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_semanticui.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_simple.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_simple.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_site.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\css\tabulator_site.min.css.map" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator.js.map" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator.min.js.map" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator_esm.js.map" />
+    <Content Include="Libraries\tabulator-tables\dist\js\tabulator_esm.min.js.map" />
+    <Content Include="Libraries\tabulator-tables\LICENSE" />
+    <Content Include="Libraries\tabulator-tables\package.json" />
+    <Content Include="Libraries\tabulator-tables\README.md" />
+    <Content Include="Libraries\tabulator-tables\src\scss\tabulator.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\functions4.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\functions5.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\tabulator_bootstrap3.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\tabulator_bootstrap4.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\tabulator_bootstrap5.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\variables3.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\variables4.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bootstrap\variables5.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bulma\tabulator_bulma.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\bulma\variables.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\materialize\tabulator_materialize.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\materialize\variables.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\semanticui\tabulator_semanticui.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\semanticui\variables.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\semanticui\variables_table.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\tabulator_midnight.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\tabulator_modern.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\tabulator_simple.scss" />
+    <Content Include="Libraries\tabulator-tables\src\scss\themes\tabulator_site.scss" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\employee-table.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
     <Content Include="Scripts\jquery-3.4.1.slim.js" />
@@ -224,77 +504,6 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\src\index.js" />
-    <Content Include="Scripts\src\methods\defaults.js" />
-    <Content Include="Scripts\src\methods\destroy.js" />
-    <Content Include="Scripts\src\methods\disableEventListeners.js" />
-    <Content Include="Scripts\src\methods\enableEventListeners.js" />
-    <Content Include="Scripts\src\methods\placements.js" />
-    <Content Include="Scripts\src\methods\update.js" />
-    <Content Include="Scripts\src\modifiers\applyStyle.js" />
-    <Content Include="Scripts\src\modifiers\arrow.js" />
-    <Content Include="Scripts\src\modifiers\computeStyle.js" />
-    <Content Include="Scripts\src\modifiers\flip.js" />
-    <Content Include="Scripts\src\modifiers\hide.js" />
-    <Content Include="Scripts\src\modifiers\index.js" />
-    <Content Include="Scripts\src\modifiers\inner.js" />
-    <Content Include="Scripts\src\modifiers\keepTogether.js" />
-    <Content Include="Scripts\src\modifiers\offset.js" />
-    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
-    <Content Include="Scripts\src\modifiers\shift.js" />
-    <Content Include="Scripts\src\utils\clockwise.js" />
-    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
-    <Content Include="Scripts\src\utils\debounce.js" />
-    <Content Include="Scripts\src\utils\find.js" />
-    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
-    <Content Include="Scripts\src\utils\findIndex.js" />
-    <Content Include="Scripts\src\utils\getBordersSize.js" />
-    <Content Include="Scripts\src\utils\getBoundaries.js" />
-    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
-    <Content Include="Scripts\src\utils\getClientRect.js" />
-    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetParent.js" />
-    <Content Include="Scripts\src\utils\getOffsetRect.js" />
-    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
-    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
-    <Content Include="Scripts\src\utils\getOuterSizes.js" />
-    <Content Include="Scripts\src\utils\getParentNode.js" />
-    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
-    <Content Include="Scripts\src\utils\getReferenceNode.js" />
-    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
-    <Content Include="Scripts\src\utils\getRoot.js" />
-    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
-    <Content Include="Scripts\src\utils\getScroll.js" />
-    <Content Include="Scripts\src\utils\getScrollParent.js" />
-    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
-    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
-    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
-    <Content Include="Scripts\src\utils\getWindow.js" />
-    <Content Include="Scripts\src\utils\getWindowSizes.js" />
-    <Content Include="Scripts\src\utils\includeScroll.js" />
-    <Content Include="Scripts\src\utils\index.js" />
-    <Content Include="Scripts\src\utils\isBrowser.js" />
-    <Content Include="Scripts\src\utils\isFixed.js" />
-    <Content Include="Scripts\src\utils\isFunction.js" />
-    <Content Include="Scripts\src\utils\isIE.js" />
-    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
-    <Content Include="Scripts\src\utils\isModifierRequired.js" />
-    <Content Include="Scripts\src\utils\isNumeric.js" />
-    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
-    <Content Include="Scripts\src\utils\removeEventListeners.js" />
-    <Content Include="Scripts\src\utils\runModifiers.js" />
-    <Content Include="Scripts\src\utils\setAttributes.js" />
-    <Content Include="Scripts\src\utils\setStyles.js" />
-    <Content Include="Scripts\src\utils\setupEventListeners.js" />
-    <Content Include="Scripts\umd\popper-utils.js" />
-    <Content Include="Scripts\umd\popper-utils.min.js" />
-    <Content Include="Scripts\umd\popper.js" />
-    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -327,23 +536,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\ActualizareDate.cshtml" />
     <Content Include="Views\Home\AdaugareAngajati.cshtml" />
-    <Content Include="Views\Home\StergereAngajati.cshtml" />
-    <Content Include="Views\Home\CalculSalarii.cshtml" />
+    <Content Include="Views\Home\GestionareAngajati.cshtml" />
     <Content Include="Views\Home\StatPlata.cshtml" />
     <Content Include="Views\Home\Fluturasi.cshtml" />
     <Content Include="Views\Home\ModificareProcente.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper.js.flow" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -355,9 +552,6 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -393,7 +587,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets'))" />
   </Target>
+  <Import Project="..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets" Condition="Exists('..\packages\System.Text.Json.6.0.0\build\System.Text.Json.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

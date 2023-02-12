@@ -106,3 +106,22 @@ C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\obj\Debu
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\obj\Debug\Proiect TI.csproj.CopyComplete
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\obj\Debug\Proiect TI.dll
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\obj\Debug\Proiect TI.pdb
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Buffers.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Memory.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Numerics.Vectors.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Text.Encodings.Web.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Text.Json.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.ValueTuple.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Buffers.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Memory.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Numerics.Vectors.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Text.Encodings.Web.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Text.Json.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.ValueTuple.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Oracle.ManagedDataAccess.dll
