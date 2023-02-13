@@ -1,53 +1,78 @@
-﻿
-@{
-    ViewBag.Title = "Adaugare angajati";
-}
-
+﻿@model Proiect_TI.Models.EmployeeViewModel
 <h2>Adaugare angajati</h2>
 <p>Pentru adaugarea unui angajat este necesara completarea tuturor casetelor. Daca exista o poza de profil, aceasta se poate incarca.</p>
 <div class="container-fluid" style=" border: solid 1px #dde0de; border-radius: 10px; padding: 30px;">
     <div class="row align-center">
         <div class="col-md-6">
-            <form id="employee-form" role="form">
-                <div class="form-group">
-                    <label for="nume">Nume:</label>
-                    <input type="text" class="form-control" id="nume">
+
+            @if (ViewBag.Success == true)
+            {
+                <div class="alert alert-success text-center">
+                    Adaugarea s-a realizat cu succes!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="form-group">
-                    <label for="prenume">Prenume:</label>
-                    <input type="text" class="form-control" id="prenume">
+            }
+            @if (ViewBag.Success == false)
+            {
+                <div class="alert alert-danger text-center">
+                    Adaugarea nu s-a realizat!
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
+            }
+            @using (Html.BeginForm("AddEmployees", "Database", FormMethod.Post, new { id = "employee-form" }))
+            {
                 <div class="form-group">
-                    <label for="functie">Functie:</label>
-                    <input type="text" class="form-control" id="functie">
+                    @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Nume, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Popescu" } })
                 </div>
+
                 <div class="form-group">
-                    <label for="salariu">Salariu de baza:</label>
-                    <input type="number" class="form-control" id="salariu">
+                    @Html.LabelFor(model => model.Prenume, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Prenume, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Andrei" } })
                 </div>
+
                 <div class="form-group">
-                    <label for="spor">Spor:</label>
-                    <input type="number" class="form-control" id="spor">
+                    @Html.LabelFor(model => model.Functie, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Functie, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: Programator" } })
                 </div>
+
                 <div class="form-group">
-                    <label for="premii">Premii brute:</label>
-                    <input type="number" class="form-control" id="premii">
+                    @Html.LabelFor(model => model.SalarBaza, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.SalarBaza, new { htmlAttributes = new { @class = "form-control", placeholder = "Ex: 3000" } })
                 </div>
+
                 <div class="form-group">
-                    <label for="retineri">Retineri:</label>
-                    <input type="number" class="form-control" id="retineri">
+                    @Html.LabelFor(model => model.Spor, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Spor, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
                 </div>
+
                 <div class="form-group">
-                    <label for="poza">Poza de profil</label>
-                    <input type="file" class="form-control-file" id="poza" />
+                    @Html.LabelFor(model => model.PremiiBrute, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.PremiiBrute, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
                 </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Retineri, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Retineri, new { htmlAttributes = new { @class = "form-control", placeholder = "0" } })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Poza, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.Poza, new { htmlAttributes = new { @class = "form-control", type = "file" } })
+                </div>
+
                 <div class="form-group" style="justify-content:center">
-                    <button type="submit" class="btn btn-primary">Adauga</button>
+                    <input type="submit" value="Adauga" class="btn btn-primary" />
                 </div>
-            </form>
+            }
         </div>
         <div class="col-md-6 text-center">
             <img class="vector-images" alt="Add emplyee image" src="~/Images/add_emplyee.jpg" />
         </div>
     </div>
 </div>
+
