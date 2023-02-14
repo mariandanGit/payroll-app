@@ -6,25 +6,26 @@ using System.Web.Mvc;
 using System.Data;
 using Proiect_TI.Models;
 using Oracle.ManagedDataAccess.Client;
+using System.IO;
 
 namespace Proiect_TI.Controllers
 {
     public class DatabaseController : Controller
     {
-        public ActionResult GetEmployees(EmployeeViewModel Employee)
+        public ActionResult GetEmployees()
         {
-            var employees = new List<EmployeeViewModel>();
-            string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+            var employees = new List<EmployeeViewModelGet>();
+            string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT";
             using (var connection = new OracleConnection(connectionString))
             {
                 connection.Open();
-                using (var command = new OracleCommand("SELECT * FROM SALARIATI", connection))
+                using (var command = new OracleCommand("SELECT ID, NUME, PRENUME, FUNCTIE, SALAR_BAZA, SPOR, PREMII_BRUTE, TOTAL_BRUT, BRUT_IMPOZABIL, IMPOZIT, CAS, CASS, RETINERI, VIRAT_CARD, POZA FROM SALARIATI", connection))
                 {
                     using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
                         {
-                            var employee = new EmployeeViewModel
+                            var employee = new EmployeeViewModelGet
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("ID")),
                                 Nume = reader.GetString(reader.GetOrdinal("NUME")),
@@ -40,7 +41,8 @@ namespace Proiect_TI.Controllers
                                 Cass = reader.GetDecimal(reader.GetOrdinal("CASS")),
                                 Retineri = reader.GetDecimal(reader.GetOrdinal("RETINERI")),
                                 ViratCard = reader.GetDecimal(reader.GetOrdinal("VIRAT_CARD")),
-                                Poza = reader.IsDBNull(reader.GetOrdinal("POZA")) ? null : Convert.ToBase64String((byte[])reader.GetValue(reader.GetOrdinal("POZA")))
+                                /*                                Poza = reader.IsDBNull(reader.GetOrdinal("POZA")) ? null : Convert.ToBase64String(reader.GetOracleBinary(reader.GetOrdinal("POZA")).Value)
+                                */
                             };
                             employees.Add(employee);
                         }
@@ -50,7 +52,7 @@ namespace Proiect_TI.Controllers
             return Json(employees, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
-        public ActionResult AddEmployees(EmployeeViewModel employee)
+        public ActionResult AddEmployees(EmployeeViewModelSet employee)
         {
             try
             {
@@ -67,12 +69,19 @@ namespace Proiect_TI.Controllers
                         command.Parameters.Add("Spor", OracleDbType.Decimal).Value = employee.Spor;
                         command.Parameters.Add("PremiiBrute", OracleDbType.Decimal).Value = employee.PremiiBrute;
                         command.Parameters.Add("Retineri", OracleDbType.Decimal).Value = employee.Retineri;
-                        if (employee.Poza != null)
+                        if (employee.Poza != null && employee.Poza.ContentLength > 0)
                         {
-                            byte[] imageBytes = Convert.FromBase64String(employee.Poza);
-                            command.Parameters.Add("Poza", OracleDbType.Blob).Value = imageBytes;
+                            byte[] bytes;
+                            using (BinaryReader br = new BinaryReader(employee.Poza.InputStream))
+                            {
+                                bytes = br.ReadBytes(employee.Poza.ContentLength);
+                            }
+                            command.Parameters.Add(new OracleParameter("POZA", OracleDbType.Blob)).Value = bytes;
                         }
-                        else command.Parameters.Add("Poza", OracleDbType.Varchar2).Value = employee.Poza; 
+                        else
+                        {
+                            command.Parameters.Add(new OracleParameter("POZA", OracleDbType.Blob)).Value = null;
+                        }
                         command.ExecuteNonQuery();
                     }
                 }
@@ -82,6 +91,60 @@ namespace Proiect_TI.Controllers
             {
                 Console.WriteLine(ex.Message);
                 return RedirectToAction("AdaugareAngajati", "Home", new { success = false });
+            }
+        }
+        [HttpPost]
+        public ActionResult UpdateData(EmployeeViewModelSet employee, int id)
+        {
+            try
+            {
+                string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    using (OracleCommand command = new OracleCommand("UPDATE SALARIATI SET NUME = :Nume, PRENUME = :Prenume, FUNCTIE = :Functie, SALAR_BAZA = :SalarBaza, SPOR = :Spor, PREMII_BRUTE = :PremiiBrute, RETINERI = :Retineri WHERE ID = :Id", connection))
+                    {
+                        command.Parameters.Add("Nume", OracleDbType.Varchar2).Value = employee.Nume;
+                        command.Parameters.Add("Prenume", OracleDbType.Varchar2).Value = employee.Prenume;
+                        command.Parameters.Add("Functie", OracleDbType.Varchar2).Value = employee.Functie;
+                        command.Parameters.Add("SalarBaza", OracleDbType.Decimal).Value = employee.SalarBaza;
+                        command.Parameters.Add("Spor", OracleDbType.Decimal).Value = employee.Spor;
+                        command.Parameters.Add("PremiiBrute", OracleDbType.Decimal).Value = employee.PremiiBrute;
+                        command.Parameters.Add("Retineri", OracleDbType.Decimal).Value = employee.Retineri;
+                        command.Parameters.Add("Id", OracleDbType.Int32).Value = employee.Id;
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+                return RedirectToAction("GestionareAngajati", "Home", new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return RedirectToAction("GestionareAngajati", "Home", new { success = false });
+            }
+        }
+        [HttpPost]
+        public ActionResult DeleteEmployee(int id)
+        {
+            try
+            {
+                string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    using (OracleCommand command = new OracleCommand("DELETE FROM SALARIATI WHERE ID = :id", connection))
+                    {
+                        command.Parameters.Add(":id", id);
+                        command.ExecuteNonQuery();
+                    }
+                }
+                return RedirectToAction("Index", "Home", new { success = true });
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return RedirectToAction("GestionareAngajati", "Home", new { success = false });
             }
         }
     }

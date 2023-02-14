@@ -13,6 +13,9 @@
     width:300px;
     margin-left:15px;
 }
+#employee-modal-spor::after {
+    content: "%";
+}
 /*#employee-table {
     border-collapse: collapse;
     border-spacing: 10px;
@@ -57,7 +60,6 @@
     background-color: #ccc;
 }
 */
-
 /* Large desktops and laptops */
 @media (min-width: 1200px) {
     .vector-images {

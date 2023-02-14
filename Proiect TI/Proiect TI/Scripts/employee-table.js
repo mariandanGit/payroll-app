@@ -1,4 +1,5 @@
-﻿var searchInput = document.querySelector("#search-input");
+﻿
+var searchInput = document.querySelector("#search-input");
 
 // Add an event listener to the search input field
 searchInput.addEventListener("input", function (event) {
@@ -9,6 +10,45 @@ searchInput.addEventListener("input", function (event) {
     table.setFilter("last_name", "like", searchTerm);
 });
 //define data array
+function deleteRow(row) {
+    console.log(row);
+    if (row) {
+        var id = row.getData().Id;
+        if (confirm("Are you sure you want to delete this employee?")) {
+            $.ajax({
+                type: "POST",
+                url: "/Database/DeleteEmployee?id=" + id,
+                contentType: 'application/json; charset=utf-8',
+                success: function () {
+                    table.setData("/Database/GetEmployees"); // reload the data from the server
+                },
+                error: function (xhr, status, error) {
+                    console.log(error); // handle the error from the server
+                }
+            });
+        }
+    }
+}
+
+function openModal(rowData) {
+
+    $('#employee-modal-id').val(rowData.Id);
+    $('#employee-modal-nume').val(rowData.Nume);
+    $('#employee-modal-prenume').val(rowData.Prenume);
+    $('#employee-modal-functie').val(rowData.Functie);
+    $('#employee-modal-salar').val(rowData.SalarBaza);
+    $('#employee-modal-spor').val(rowData.Spor);
+    $('#employee-modal-premii-brute').val(rowData.PremiiBrute);
+    $('#employee-modal-total-brut').val(rowData.TotalBrut).prop('disabled', true);
+    $('#employee-modal-brut-impozabil').val(rowData.BrutImpozabil).prop('disabled', true);
+    $('#employee-modal-impozit').val(rowData.Impozit).prop('disabled', true);
+    $('#employee-modal-cas').val(rowData.Cas).prop('disabled', true);
+    $('#employee-modal-cass').val(rowData.Cass).prop('disabled', true);
+    $('#employee-modal-retineri').val(rowData.Retineri);
+    $('#employee-modal-virat-card').val(rowData.ViratCard).prop('disabled', true);
+
+    $('#employee-modal').modal('show');
+}
 
 var table = new Tabulator("#employee-table", {
     ajaxURL: "/Database/GetEmployees",
@@ -36,9 +76,44 @@ var table = new Tabulator("#employee-table", {
             title: "Actiuni",
             align: "center",
             formatter: function (cell, formatterParams, onRendered) {
-                var editBtn = "<button class='btn btn-xs btn-primary' onclick='editRow(" + cell.getRow().getIndex() + ")'>Edit</button>";
-                var delBtn = "<button class='btn btn-xs btn-danger' onclick='deleteRow(" + cell.getRow().getIndex() + ")'>Delete</button>";
-                return editBtn + " " + delBtn;
+
+                var editButton = document.createElement("button");
+                editButton.classList.add("btn", "btn-primary");
+                editButton.style.marginRight = "5px";
+                editButton.innerHTML = "Editare";
+                editButton.addEventListener("click", function (e) {
+                    var rowData = cell.getRow().getData();
+                    openModal(rowData);
+                });
+
+                var deleteButton = document.createElement("button");
+                deleteButton.classList.add("btn", "btn-danger");
+                deleteButton.style.marginRight
+                deleteButton.innerHTML = "Stergere";
+                deleteButton.addEventListener("click", function (e) {
+                    var row = cell.getRow();
+                    if (row) {
+                        var id = row.getData().Id;
+                        if (confirm("Sigur doriti sa stergeti acest angajat?")) {
+                            $.ajax({
+                                type: "POST",
+                                url: "/Database/DeleteEmployee?id=" + id,
+                                contentType: 'application/json; charset=utf-8',
+                                success: function () {
+                                    table.setData("/Database/GetEmployees"); 
+                                },
+                                error: function (xhr, status, error) {
+                                    console.log(error); 
+                                }
+                            });
+                        }
+                    }
+                });
+                var container = document.createElement("div");
+                container.appendChild(editButton);
+                container.appendChild(deleteButton);
+
+                return container;
             },
             headerSort: false
         },        
