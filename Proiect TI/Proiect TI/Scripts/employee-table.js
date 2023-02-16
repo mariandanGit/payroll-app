@@ -1,17 +1,4 @@
-﻿
-var searchInput = document.querySelector("#search-input");
-
-// Add an event listener to the search input field
-searchInput.addEventListener("input", function (event) {
-    // Get the search term from the input field
-    var searchTerm = event.target.value;
-
-    // Filter the table data based on the search term
-    table.setFilter("last_name", "like", searchTerm);
-});
-//define data array
-function deleteRow(row) {
-    console.log(row);
+﻿function deleteRow(row) {
     if (row) {
         var id = row.getData().Id;
         if (confirm("Are you sure you want to delete this employee?")) {
@@ -20,10 +7,10 @@ function deleteRow(row) {
                 url: "/Database/DeleteEmployee?id=" + id,
                 contentType: 'application/json; charset=utf-8',
                 success: function () {
-                    table.setData("/Database/GetEmployees"); // reload the data from the server
+                    table.setData("/Database/GetEmployees");
                 },
                 error: function (xhr, status, error) {
-                    console.log(error); // handle the error from the server
+                    console.log(error);
                 }
             });
         }
@@ -49,6 +36,28 @@ function openModal(rowData) {
 
     $('#employee-modal').modal('show');
 }
+var filterField = document.getElementById("filter-field");
+var searchInput = document.getElementById("search-input");
+var clearButton = document.getElementById("filter-clear");
+
+searchInput.addEventListener("input", function (event) {
+    var filterVal = filterField.options[filterField.selectedIndex].value;
+    var searchTerm = event.target.value;
+    if (filterVal) {
+        table.setFilter([
+            { field: filterVal, type: "like", value: searchTerm }
+        ]);
+    }
+});
+
+clearButton.addEventListener("click", function () {
+    searchInput.value = "";
+    filterField.selectedIndex = 0;
+    table.clearFilter();
+});
+
+var tableHolderElement = document.getElementById("employee-table");
+tableHolderElement.style.borderRadius = "5px";
 
 var table = new Tabulator("#employee-table", {
     ajaxURL: "/Database/GetEmployees",
@@ -59,8 +68,10 @@ var table = new Tabulator("#employee-table", {
     paginationSize: 20,        //allow 15 rows per page of data
     paginationCounter: "rows", //display count of paginated rows in footer
     movableColumns: true,      //allow column order to be changed
+    tableHolder: document.getElementById("employee-table"),
+    headerBackgroundColor: "#1f1f1f",
     initialSort: [             //set the initial sort order of the data
-        { column: "name", dir: "asc" },
+        { column: "Nume", dir: "asc" },
     ],
     columnDefaults: {
         tooltip: true,         //show tool tips on cells
@@ -68,7 +79,22 @@ var table = new Tabulator("#employee-table", {
     height: "100%",
     columns:[
         { title: "Nr. crt", field: "Id", sorter: "number" },
-        { title: "Poza", field: "Poza", formatter: "image", width: 80, align: "right", headerSort: false,  },
+        {
+            title: "Poza",
+            field: "Poza",
+            formatter: function (cell, formatterParams, onRendered) {
+                var value = cell.getValue();
+                if (value) {
+                    var image = document.createElement("img");
+                    image.src = "data:image/jpeg;base64," + value;
+                    return image;
+                }
+                return "";
+            },
+            width: 80,
+            align: "right",
+            headerSort: false,
+        },
         { title: "Nume", field: "Nume" },
         { title: "Prenume", field: "Prenume" },
         { title: "Functie", field: "Functie" },

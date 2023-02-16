@@ -4,10 +4,15 @@
     justify-content:space-between;
     align-items:center;
 }
-#employee-form{
+.employee-form{
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+#percentage-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 #delete-form{
     width:300px;
@@ -16,51 +21,8 @@
 #employee-modal-spor::after {
     content: "%";
 }
-/*#employee-table {
-    border-collapse: collapse;
-    border-spacing: 10px;
-    width: 100%;
-    margin: 0 auto;
-}
 
-#employee-table thead {
-    background-color: white;
-    color: #808080;
-}
-
-#employee-table th {
-    padding: 8px;
-}
-#employee-table tr:nth-of-type(even) {
-    background-color: #f2f2f2;
-}
-#employee-table tr{
-    border-radius:10px;
-    overflow:hidden;
-}
-#employee-table tbody tr:hover{
-   background-color: #f4f6fa;
-}
-
-#employee-table td {
-    border: none;
-    padding: 8px;
-}
-
-#employee-table td a {
-    display: inline-block;
-    margin-right: 4px;
-    padding: 4px 8px;
-    background-color: #e0e0e0;
-    color: #333;
-    text-decoration: none;
-}
-
-#employee-table td a:hover {
-    background-color: #ccc;
-}
-*/
-/* Large desktops and laptops */
+/*/* Large desktops and laptops */
 @media (min-width: 1200px) {
     .vector-images {
         width: 500px;

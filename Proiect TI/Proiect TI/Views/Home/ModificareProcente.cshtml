@@ -1,7 +1,84 @@
-﻿
-@{
-    ViewBag.Title = "ModificareProcente";
-}
+﻿@model Proiect_TI.Models.Percentages
 
-<h2>ModificareProcente</h2>
+<h2>Modificare procente</h2>
+<p>Modificarea procentelor este o operatie securizata si necesita introducerea unei parole.</p>
+<div class="container-fluid" style=" border: solid 1px #dde0de; border-radius: 10px; padding: 30px;">
+    <div class="row align-center">
+        <div class="col-md-6">
+
+            @if (ViewBag.Success == true)
+            {
+                <div class="alert alert-success text-center">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Actualizarea s-a realizat cu succes!
+                </div>
+            }
+            @if (ViewBag.Success == false)
+            {
+                <div class="alert alert-danger text-center">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Actualizarea nu s-a realizat.
+                    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+                    {
+                        @ViewBag.ErrorMessage
+                        <br>
+                    }
+                </div>
+            }
+            @using (Html.BeginForm("UpdatePercentages", "Database", FormMethod.Post, new { style = "display:flex; flex-direction:column; align-items:center" }))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CAS, "CAS", htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.CAS, new { @class = "form-control", type = "number", step = "0.01", min = "0", @Value = Model.CAS })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CASS, "CASS", htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.CASS, new { @class = "form-control", type = "number", step = "0.01", min = "0", @Value = Model.CASS })
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Impozit, "IMPOZIT", htmlAttributes: new { @class = "control-label" })
+                    @Html.TextBoxFor(model => model.Impozit, new { @class = "form-control", type = "number", step = "0.01", min = "0", @Value = Model.Impozit })
+                </div>
+
+                <div class="form-group" style="justify-content:center">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#passwordModal">Modifica</button>
+                </div>
+
+                <div class="modal fade" id="passwordModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                <h3 class="modal-title text-center" id="passwordModalTitle">Introducere parola</h3>
+                            </div>
+                            <div class="modal-body">
+                                <div class="container">
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.Parola, htmlAttributes: new { @class = "control-label" })
+                                        @Html.TextBoxFor(model => model.Parola, new { @class = "form-control", type = "password" })
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <input type="submit" value="Modifica" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="col-md-6 text-center">
+            <img class="vector-images" alt="Add emplyee image" src="~/Images/modify_percentage.jpg" />
+        </div>
+    </div>
+</div>
 

@@ -23,7 +23,7 @@
                     </button>
                 </div>
             }
-            @using (Html.BeginForm("AddEmployees", "Database", FormMethod.Post, new { id = "employee-form", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("AddEmployees", "Database", FormMethod.Post, htmlAttributes: new { style="display:flex; flex-direction:column; align-items:center", enctype = "multipart/form-data" }))
             {
                 <div class="form-group">
                     @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label" })

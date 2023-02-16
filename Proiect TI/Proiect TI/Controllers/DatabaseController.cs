@@ -16,6 +16,7 @@ namespace Proiect_TI.Controllers
         {
             var employees = new List<EmployeeViewModelGet>();
             string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT";
+
             using (var connection = new OracleConnection(connectionString))
             {
                 connection.Open();
@@ -41,8 +42,7 @@ namespace Proiect_TI.Controllers
                                 Cass = reader.GetDecimal(reader.GetOrdinal("CASS")),
                                 Retineri = reader.GetDecimal(reader.GetOrdinal("RETINERI")),
                                 ViratCard = reader.GetDecimal(reader.GetOrdinal("VIRAT_CARD")),
-                                /*                                Poza = reader.IsDBNull(reader.GetOrdinal("POZA")) ? null : Convert.ToBase64String(reader.GetOracleBinary(reader.GetOrdinal("POZA")).Value)
-                                */
+                                Poza = reader.IsDBNull(reader.GetOrdinal("POZA")) ? null : (byte[])reader["POZA"]
                             };
                             employees.Add(employee);
                         }
@@ -94,7 +94,7 @@ namespace Proiect_TI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UpdateData(EmployeeViewModelSet employee, int id)
+        public ActionResult UpdateData(EmployeeViewModelSet employee)
         {
             try
             {
@@ -125,6 +125,48 @@ namespace Proiect_TI.Controllers
             }
         }
         [HttpPost]
+        public ActionResult UpdatePercentages(Percentages percentages)
+        {
+            try
+            {
+                string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    using (OracleCommand command = new OracleCommand("SELECT PAROLA FROM PROCENTE WHERE PAROLA = :Parola", connection))
+                    {
+                        command.Parameters.Add("Parola", OracleDbType.Varchar2).Value = percentages.Parola;
+
+                        object password = command.ExecuteScalar();
+                        if (password != null && password != DBNull.Value)
+                        {
+                            var query = "UPDATE PROCENTE SET CAS = " + percentages.CAS + ", CASS = " + percentages.CASS + ", Impozit = " + percentages.Impozit + " WHERE PAROLA = '" + percentages.Parola + "'";
+
+                            using (var updatePercentagesCommand = new OracleCommand(query, connection))
+                            {
+                                updatePercentagesCommand.ExecuteNonQuery();
+                            }
+
+                            using (OracleCommand updateSalariatiCommand = new OracleCommand("UPDATE SALARIATI SET NUME = NUME", connection))
+                            {
+                                updateSalariatiCommand.ExecuteNonQuery();
+                            }
+
+                            return RedirectToAction("ModificareProcente", "Home", new { success = true });
+                        }
+                        else
+                        {
+                            return RedirectToAction("ModificareProcente", "Home", new { success = false, message = "Parola invalida" });
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("ModificareProcente", "Home", new { success = false, message = ex.Message });
+            }
+        }       
+        [HttpPost]
         public ActionResult DeleteEmployee(int id)
         {
             try
@@ -139,7 +181,7 @@ namespace Proiect_TI.Controllers
                         command.ExecuteNonQuery();
                     }
                 }
-                return RedirectToAction("Index", "Home", new { success = true });
+                return RedirectToAction("GestionareAngajati", "Home", new { success = true });
             }
             catch (Exception ex)
             {

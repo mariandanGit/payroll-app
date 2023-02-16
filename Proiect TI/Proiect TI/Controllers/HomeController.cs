@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
+using Proiect_TI.Models;
 
 namespace Proiect_TI.Controllers
 {
@@ -14,7 +15,12 @@ namespace Proiect_TI.Controllers
         {
             return View();
         }
-        
+
+        public ActionResult GetServerTime()
+        {
+            var currentTime = DateTime.Now.ToString("HH:mm:ss");
+            return Content(currentTime);
+        }
         public ActionResult AdaugareAngajati(bool ? success)
         {
             ViewBag.Success = success;
@@ -36,10 +42,41 @@ namespace Proiect_TI.Controllers
 
             return View();
         }
-        public ActionResult ModificareProcente()
+        public ActionResult ModificareProcente(bool? success, string message)
         {
+            ViewBag.Success = success;
+            ViewBag.ErrorMessage = message;
+            Percentages percentages = null;
+            try
+            {
+                string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
+                using (var connection = new OracleConnection(connectionString))
+                {
+                    connection.Open();
+                    using (OracleCommand command = new OracleCommand("SELECT CAS, CASS, IMPOZIT FROM PROCENTE", connection))
+                    {
+                        using (var reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                percentages = new Percentages
+                                {
+                                    CAS = reader.GetString(reader.GetOrdinal("CAS")).Replace(',', '.'),
+                                    CASS = reader.GetString(reader.GetOrdinal("CASS")).Replace(',', '.'),
+                                    Impozit = reader.GetString(reader.GetOrdinal("IMPOZIT")).Replace(',', '.')
+                                };
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return View("Error");
+            }
 
-            return View();
+            return View(percentages);
         }
     }
 }

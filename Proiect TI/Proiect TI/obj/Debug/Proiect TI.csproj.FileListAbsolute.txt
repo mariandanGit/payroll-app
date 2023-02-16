@@ -125,3 +125,9 @@ C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Syst
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\System.ValueTuple.xml
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Oracle.ManagedDataAccess.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\CrystalDecisions.Shared.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\log4net.dll
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\log4net.xml
+C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\CrystalDecisions.ReportSource.dll

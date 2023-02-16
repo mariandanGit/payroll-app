@@ -23,6 +23,10 @@ namespace Proiect_TI
                       "~/Scripts/bootstrap.min.js"
                       ));
 
+            bundles.Add(new Bundle("~/bundles/table").Include(
+                      "~/Scripts/employee-table.js"
+                      ));
+
             bundles.Add(new Bundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/custom.css",
