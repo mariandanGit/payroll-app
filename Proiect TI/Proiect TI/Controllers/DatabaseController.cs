@@ -14,7 +14,7 @@ namespace Proiect_TI.Controllers
     {
         public ActionResult GetEmployees()
         {
-            var employees = new List<EmployeeViewModelGet>();
+            var employees = new List<EmployeeViewModel>();
             string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT";
 
             using (var connection = new OracleConnection(connectionString))
@@ -26,7 +26,7 @@ namespace Proiect_TI.Controllers
                     {
                         while (reader.Read())
                         {
-                            var employee = new EmployeeViewModelGet
+                            var employee = new EmployeeViewModel
                             {
                                 Id = reader.GetInt32(reader.GetOrdinal("ID")),
                                 Nume = reader.GetString(reader.GetOrdinal("NUME")),
@@ -41,8 +41,7 @@ namespace Proiect_TI.Controllers
                                 Cas = reader.GetDecimal(reader.GetOrdinal("CAS")),
                                 Cass = reader.GetDecimal(reader.GetOrdinal("CASS")),
                                 Retineri = reader.GetDecimal(reader.GetOrdinal("RETINERI")),
-                                ViratCard = reader.GetDecimal(reader.GetOrdinal("VIRAT_CARD")),
-                                Poza = reader.IsDBNull(reader.GetOrdinal("POZA")) ? null : (byte[])reader["POZA"]
+                                ViratCard = reader.GetDecimal(reader.GetOrdinal("VIRAT_CARD"))                            
                             };
                             employees.Add(employee);
                         }
@@ -51,8 +50,32 @@ namespace Proiect_TI.Controllers
             }
             return Json(employees, JsonRequestBehavior.AllowGet);
         }
+        public ActionResult GetEmployeeImage(int id)
+        {
+            string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID=STUDENT";
+
+            using (var connection = new OracleConnection(connectionString))
+            {
+                connection.Open();
+                using (var command = new OracleCommand("SELECT POZA FROM SALARIATI WHERE ID = :id", connection))
+                {
+                    command.Parameters.Add(new OracleParameter("id", id));
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read() && !reader.IsDBNull(reader.GetOrdinal("POZA")))
+                        {
+                            byte[] imageData = (byte[])reader["POZA"];
+                            return File(imageData, "image/jpeg");
+                        }
+                    }
+                }
+            }
+
+            return new EmptyResult();
+        }
         [HttpPost]
-        public ActionResult AddEmployees(EmployeeViewModelSet employee)
+        public ActionResult AddEmployees(EmployeeViewModel employee)
         {
             try
             {
@@ -94,7 +117,7 @@ namespace Proiect_TI.Controllers
             }
         }
         [HttpPost]
-        public ActionResult UpdateData(EmployeeViewModelSet employee)
+        public ActionResult UpdateData(EmployeeViewModel employee)
         {
             try
             {

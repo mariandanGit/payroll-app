@@ -1,7 +1,7 @@
-﻿@model Proiect_TI.Models.EmployeeViewModelSet
+﻿@model Proiect_TI.Models.EmployeeViewModel
 
 <h2>Gestionare angajati</h2>
-<p></p>
+<p>Tabelul de mai jos reprezinta angajatii firmei. Datele acestora pot fi modificare de pe butonul de editare si pot fi stersi de pe butonul stergere.</p>
 @if (ViewBag.Success == true)
 {
     <div class="alert alert-success text-center">
@@ -20,7 +20,7 @@
         </button>
     </div>
 }
-<div class="container-fluid" style=" border: solid 1px #dde0de; border-radius: 10px; padding: 30px; padding-bottom:100px; margin-bottom:100px">
+<div class="container-fluid" style="border: solid 1px #f9fafb; border-radius: 10px; padding: 30px; padding-bottom: 100px; margin-bottom: 100px ">
     <div class="row align-center">
         <div class="col-md-12">
             <div class="container" style="max-width:100%; height:500px;">
@@ -47,10 +47,16 @@
                                 </button>
                                 <h3 class="modal-title text-center" id="exampleModalLongTitle">Date angajat</h3>
                             </div>
+
                             <div class="modal-body">
 
                                 @using (Html.BeginForm("UpdateData", "Database", FormMethod.Post, new { id = "employee-form" }))
                                 {
+
+                                    <div id="image-container" style="display:flex; flex-direction:column; justify-content:center; align-items:center; padding:10px;">
+                                        <img id="employee-image" src="" style="width:100px; height:100px; object-fit:cover; border-radius:50%" alt="Employee image" />
+                                        <input type="file" name="name" value="" />
+                                    </div>
 
                                     <div class="form-group">
                                         <label>Nr. Crt</label>
@@ -74,7 +80,7 @@
 
                                     <div class="form-group">
                                         <label>Salar de baza</label>
-                                        @Html.TextBoxFor(model => model.SalarBaza, new { id = "employee-modal-salar", @class = "form-control" })
+                                        @Html.TextBoxFor(model => model.SalarBaza, new { id = "employee-modal-salar", @class = "form-control", type = "number" })
                                     </div>
 
                                     <div class="form-group">

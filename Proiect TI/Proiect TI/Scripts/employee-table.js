@@ -56,20 +56,14 @@ clearButton.addEventListener("click", function () {
     table.clearFilter();
 });
 
-var tableHolderElement = document.getElementById("employee-table");
-tableHolderElement.style.borderRadius = "5px";
-
 var table = new Tabulator("#employee-table", {
     ajaxURL: "/Database/GetEmployees",
-    layout: "fitColumns",      //fit columns to width of table
-    responsiveLayout: "hide",  //hide columns that dont fit on the table
+    layout: "fitDataStretch",      //fit columns to width of table
     addRowPos: "top",          //when adding a new row, add it to the top of the table
     pagination: "local",       //paginate the data
     paginationSize: 20,        //allow 15 rows per page of data
+    placeholder: "Lipsa date",
     paginationCounter: "rows", //display count of paginated rows in footer
-    movableColumns: true,      //allow column order to be changed
-    tableHolder: document.getElementById("employee-table"),
-    headerBackgroundColor: "#1f1f1f",
     initialSort: [             //set the initial sort order of the data
         { column: "Nume", dir: "asc" },
     ],
@@ -78,29 +72,35 @@ var table = new Tabulator("#employee-table", {
     },
     height: "100%",
     columns:[
-        { title: "Nr. crt", field: "Id", sorter: "number" },
+        { title: "Nr. crt", field: "Id", sorter: "number", vertAlign: "middle", width: 100 },
         {
             title: "Poza",
             field: "Poza",
+            width: 100,
             formatter: function (cell, formatterParams, onRendered) {
-                var value = cell.getValue();
-                if (value) {
-                    var image = document.createElement("img");
-                    image.src = "data:image/jpeg;base64," + value;
-                    return image;
-                }
-                return "";
+
+                var img = document.createElement("img");
+                img.src = "/Database/GetEmployeeImage?id=" + cell.getRow().getData().Id;
+                img.style.width = "70px";
+                img.style.height = "70px";
+                img.style.objectFit = "cover";
+                img.style.borderRadius = "50%";
+
+                img.onerror = function () {
+                    img.src = "/Images/default-user.png";
+                };
+
+                return img;
             },
-            width: 80,
-            align: "right",
+            vertAlign: "middle",
             headerSort: false,
         },
-        { title: "Nume", field: "Nume" },
-        { title: "Prenume", field: "Prenume" },
-        { title: "Functie", field: "Functie" },
+        { title: "Nume", field: "Nume", vertAlign: "middle", width: 200 },
+        { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 200},
+        { title: "Functie", field: "Functie", vertAlign: "middle", width: 200},
         {
             title: "Actiuni",
-            align: "center",
+            vertAlign: "middle",
             formatter: function (cell, formatterParams, onRendered) {
 
                 var editButton = document.createElement("button");
@@ -109,6 +109,14 @@ var table = new Tabulator("#employee-table", {
                 editButton.innerHTML = "Editare";
                 editButton.addEventListener("click", function (e) {
                     var rowData = cell.getRow().getData();
+
+                    var img = document.getElementById("employee-image");
+                    img.src = "/Database/GetEmployeeImage?id=" + cell.getRow().getData().Id;
+
+                    img.onerror = function () {
+                        img.src = "/Images/default-user.png";
+                    };
+
                     openModal(rowData);
                 });
 
