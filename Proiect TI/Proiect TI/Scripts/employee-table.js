@@ -95,8 +95,8 @@ var table = new Tabulator("#employee-table", {
             vertAlign: "middle",
             headerSort: false,
         },
-        { title: "Nume", field: "Nume", vertAlign: "middle", width: 200 },
-        { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 200},
+        { title: "Nume", field: "Nume", vertAlign: "middle", width: 150 },
+        { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 150},
         { title: "Functie", field: "Functie", vertAlign: "middle", width: 200},
         {
             title: "Actiuni",

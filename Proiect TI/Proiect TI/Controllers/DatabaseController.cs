@@ -135,8 +135,24 @@ namespace Proiect_TI.Controllers
                         command.Parameters.Add("PremiiBrute", OracleDbType.Decimal).Value = employee.PremiiBrute;
                         command.Parameters.Add("Retineri", OracleDbType.Decimal).Value = employee.Retineri;
                         command.Parameters.Add("Id", OracleDbType.Int32).Value = employee.Id;
-
                         command.ExecuteNonQuery();
+                    }
+                    if (employee.Poza != null && employee.Poza.ContentLength > 0)
+                    {
+                        byte[] bytes;
+                        using (BinaryReader br = new BinaryReader(employee.Poza.InputStream))
+                        {
+                            bytes = br.ReadBytes(employee.Poza.ContentLength);
+                        }
+
+                        var query = "UPDATE SALARIATI SET POZA = :blobData WHERE ID = :employeeId";
+
+                        using (var updateCommand = new OracleCommand(query, connection))
+                        {
+                            updateCommand.Parameters.Add("blobData", OracleDbType.Blob, bytes, ParameterDirection.Input);
+                            updateCommand.Parameters.Add("employeeId", OracleDbType.Int32, employee.Id, ParameterDirection.Input);
+                            updateCommand.ExecuteNonQuery();
+                        }
                     }
                 }
                 return RedirectToAction("GestionareAngajati", "Home", new { success = true });
@@ -144,7 +160,7 @@ namespace Proiect_TI.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                return RedirectToAction("GestionareAngajati", "Home", new { success = false });
+                return RedirectToAction("GestionareAngajati", "Home", new { success = false, message = ex.Message });
             }
         }
         [HttpPost]

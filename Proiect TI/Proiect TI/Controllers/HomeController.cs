@@ -26,9 +26,10 @@ namespace Proiect_TI.Controllers
             ViewBag.Success = success;
             return View();
         }
-        public ActionResult GestionareAngajati(bool? success)
+        public ActionResult GestionareAngajati(bool? success, string message)
         {
             ViewBag.Success = success;
+            ViewBag.ErrorMessage = message;
 
             return View();
         }
@@ -72,7 +73,6 @@ namespace Proiect_TI.Controllers
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message);
                 return View("Error");
             }
 
