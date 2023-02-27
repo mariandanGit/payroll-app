@@ -1,7 +1,10 @@
 ﻿@model Proiect_TI.Models.Percentages
 
 <h2>Modificare procente</h2>
-<p>Modificarea procentelor este o operatie securizata si necesita introducerea unei parole.</p>
+<span style="display:flex;">
+    <b class="glyphicon glyphicon-info-sign" style="font-size: 25px; margin-right: 10px; color: #337ab7;"></b>
+    <p>Modificarea procentelor este o operatie securizata si necesita introducerea unei parole. Modificarea procentelor duce la recalcularea salariilor tuturor angajatilor!</p>
+</span>
 <div class="container-fluid" style=" border: solid 1px #dde0de; border-radius: 10px; padding: 30px;">
     <div class="row align-center">
         <div class="col-md-6">
@@ -12,7 +15,7 @@
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    Actualizarea s-a realizat cu succes!
+                    Actualizarea s-a realizat cu succes! 
                 </div>
             }
             @if (ViewBag.Success == false)

@@ -61,7 +61,7 @@ var table = new Tabulator("#employee-table", {
     layout: "fitDataStretch",      //fit columns to width of table
     addRowPos: "top",          //when adding a new row, add it to the top of the table
     pagination: "local",       //paginate the data
-    paginationSize: 20,        //allow 15 rows per page of data
+    paginationSize: 10,        //allow 15 rows per page of data
     placeholder: "Lipsa date",
     paginationCounter: "rows", //display count of paginated rows in footer
     initialSort: [             //set the initial sort order of the data
@@ -71,7 +71,7 @@ var table = new Tabulator("#employee-table", {
         tooltip: true,         //show tool tips on cells
     },
     height: "100%",
-    columns:[
+    columns: [
         { title: "Nr. crt", field: "Id", sorter: "number", vertAlign: "middle", width: 100 },
         {
             title: "Poza",
@@ -97,7 +97,17 @@ var table = new Tabulator("#employee-table", {
         },
         { title: "Nume", field: "Nume", vertAlign: "middle", width: 150 },
         { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 150},
-        { title: "Functie", field: "Functie", vertAlign: "middle", width: 200},
+        { title: "Functie", field: "Functie", vertAlign: "middle", width: 150},        
+        { title: "Salar de baza", field: "SalarBaza", vertAlign: "middle", bottomCalc:"sum" },
+        { title: "Spor", field: "Spor", vertAlign: "middle" },
+        { title: "Premii brute", field: "PremiiBrute", vertAlign: "middle" },
+        { title: "Total brut", field: "TotalBrut", vertAlign: "middle" },
+        { title: "Brut impozabil", field: "BrutImpozabil", vertAlign: "middle" },
+        { title: "Impozit", field: "Impozit", vertAlign: "middle" },
+        { title: "CAS", field: "Cas", vertAlign: "middle" },
+        { title: "CASS", field: "Cass", vertAlign: "middle" },
+        { title: "Retineri", field: "Retineri", vertAlign: "middle" },
+        { title: "Virat card", field: "ViratCard", vertAlign: "middle", bottomCalc: "sum" },
         {
             title: "Actiuni",
             vertAlign: "middle",
@@ -134,10 +144,10 @@ var table = new Tabulator("#employee-table", {
                                 url: "/Database/DeleteEmployee?id=" + id,
                                 contentType: 'application/json; charset=utf-8',
                                 success: function () {
-                                    table.setData("/Database/GetEmployees"); 
+                                    table.setData("/Database/GetEmployees");
                                 },
                                 error: function (xhr, status, error) {
-                                    console.log(error); 
+                                    console.log(error);
                                 }
                             });
                         }
@@ -150,16 +160,16 @@ var table = new Tabulator("#employee-table", {
                 return container;
             },
             headerSort: false
-        },        
-        { title: "Salar de baza", field: "SalarBaza", visible: false },
-        { title: "Spor %", field: "Spor", visible: false },
-        { title: "Premii brute", field: "PremiiBrute", visible: false },
-        { title: "Total brut", field: "TotalBrut", visible: false },
-        { title: "Brut impozabil", field: "BrutImpozabil", visible: false },
-        { title: "Impozit", field: "Impozit", visible: false },
-        { title: "CAS", field: "Cas", visible: false },
-        { title: "CASS", field: "Cass", visible: false },
-        { title: "Retineri", field: "Retineri", visible: false },
-        { title: "Virat card", field: "ViratCard", visible: false },
-    ]
+        },
+    ],
+    bottomCalcFormatter: function (cell) {
+        // get the column definition
+        var column = cell.getColumn().getDefinition();
+        // check if this is the first column
+        if (column.field === "Id") {
+            return "Total:";
+        }
+        // return the calculated value for other columns
+        return cell.getValue();
+    }
 });

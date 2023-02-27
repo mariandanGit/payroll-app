@@ -1,31 +1,34 @@
 ﻿@model Proiect_TI.Models.EmployeeViewModel
 
 <h2>Gestionare angajati</h2>
-<p>Tabelul de mai jos reprezinta angajatii firmei. Datele acestora pot fi modificare de pe butonul de editare si pot fi stersi de pe butonul stergere.</p>
+<span style="display:flex;">
+    <b class="glyphicon glyphicon-info-sign" style="font-size: 25px; margin-right: 10px; color: #337ab7;"></b>
+    <p>Tabelul de mai jos reprezinta angajatii firmei. Datele acestora pot fi modificare de pe butonul de editare si pot fi stersi de pe butonul stergere.</p>
+</span>
 @if (ViewBag.Success == true)
 {
-<div class="alert alert-success text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    Actualizarea s-a realizat cu succes!
+    <div class="alert alert-success text-center">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Actualizarea s-a realizat cu succes!
 
-</div>
+    </div>
 }
 @if (ViewBag.Success == false)
 {
-<div class="alert alert-danger text-center">
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-    Actualizarea nu s-a realizat!
-    @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
-    {
-        @ViewBag.ErrorMessage
-        <br>
-    }
+    <div class="alert alert-danger text-center">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        Actualizarea nu s-a realizat!
+        @if (!string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            @ViewBag.ErrorMessage
+            <br>
+        }
 
-</div>
+    </div>
 }
 <div class="container-fluid" style="border: solid 1px #dde0de; border-radius: 10px; padding: 30px; padding-bottom: 100px; margin-bottom: 100px ">
     <div class="row align-center">
@@ -62,7 +65,7 @@
 
                                     <div class="container-fluid">
 
-                                        <div class="row" style= "border: solid 1px #dde0de; padding: 10px; border-radius: 10px; margin: 10px";>
+                                        <div class="row" style="border: solid 1px #dde0de; padding: 10px; border-radius: 10px; margin: 10px" ;>
                                             <h4>Date personale</h4>
                                             <div class="col-md-12">
                                                 <div style="display:flex; flex-direction:column; justify-content:center; align-items:center; margin-bottom:10px;">

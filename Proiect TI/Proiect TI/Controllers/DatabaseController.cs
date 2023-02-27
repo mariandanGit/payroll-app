@@ -77,6 +77,9 @@ namespace Proiect_TI.Controllers
         [HttpPost]
         public ActionResult AddEmployees(EmployeeViewModel employee)
         {
+            var validator = new EmployeeValidator();
+            var result = validator.Validate(employee);
+
             try
             {
                 string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";

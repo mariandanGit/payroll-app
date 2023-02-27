@@ -32,6 +32,13 @@ namespace Proiect_TI
                       "~/Content/custom.css",
                       "~/Content/bootstrap.min.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/crystalreports").Include(
+                "~/CrystalReports/aspnet_client/system_web/4_0_30319/crystalreportviewers13/css/cedefault.css",
+                "~/CrystalReports/aspnet_client/system_web/4_0_30319/crystalreportviewers13/css/default.css",
+                "~/CrystalReports/aspnet_client/system_web/4_0_30319/crystalreportviewers13/css/exception.css",
+                "~/CrystalReports/aspnet_client/system_web/4_0_30319/crystalreportviewers13/css/prompting.css"
+            ));
         }
     }
 }
