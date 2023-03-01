@@ -2,8 +2,12 @@
 
 <h2>Gestionare angajati</h2>
 <span style="display:flex;">
-    <b class="glyphicon glyphicon-info-sign" style="font-size: 25px; margin-right: 10px; color: #337ab7;"></b>
+    <b class="glyphicon glyphicon-info-sign" style="font-size: 20px; margin-right: 10px; color: #337ab7;"></b>
     <p>Tabelul de mai jos reprezinta angajatii firmei. Datele acestora pot fi modificare de pe butonul de editare si pot fi stersi de pe butonul stergere.</p>
+</span>
+<span style="display:flex;">
+    <b class="glyphicon glyphicon-info-sign" style="font-size: 20px; margin-right: 10px; color: #337ab7;"></b>
+    <p>Documentele precum statul de plata si fluturasii pentru toti angajatii pot fi printate de pe butonul 'Tiparire documente'. Fluturasii individuali pot fi printati din tabel.</p>
 </span>
 @if (ViewBag.Success == true)
 {
@@ -30,19 +34,45 @@
 
     </div>
 }
-<div class="container-fluid" style="border: solid 1px #dde0de; border-radius: 10px; padding: 30px; padding-bottom: 100px; margin-bottom: 100px ">
+<div class="container-fluid" style="border: solid 1px #dde0de; border-radius: 10px; padding: 30px; padding-bottom: 150px; margin-bottom: 100px ">
     <div class="row align-center">
         <div class="col-md-12">
             <div class="container" style="max-width:100%; height:500px;">
 
-                <div class="container-fluid" style="display:flex; border: solid 1px #dde0de; border-radius: 10px; background-color:#f9f9f9; padding: 10px;">
-                    <select id="filter-field" class="form-control" style="margin-right:5px">
-                        <option value="Nume">Nume</option>
-                        <option value="Prenume">Prenume</option>
-                        <option value="Functie">Functie</option>
-                    </select>
-                    <input type="text" id="search-input" style="margin-right:5px" class="form-control" placeholder="Cautare angajat">
-                    <button id="filter-clear" class="btn btn-primary">Clear</button>
+                <div class="container-fluid" style="display:flex; flex-direction:column; border: solid 1px #dde0de; border-radius: 10px; background-color:#f9f9f9; padding: 10px;">
+                    
+                    <div style="display:flex; margin:5px;">
+                        <div class="dropdown">
+                            <button href="#" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Tiparire documente <b class="caret"></b></button>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Stat de plata</li>
+                                <li>
+                                    <a href="@Url.Action("StatDePlataViewer")"><b class="glyphicon glyphicon-print"></b> Tiparire</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("StatDePlataPDF")"><b class="glyphicon glyphicon-save-file"></b> Descarcare PDF</a>
+                                </li>
+                                <li class="dropdown-header">Fluturasi toti angajatii</li>
+                                <li>
+                                    <a href="@Url.Action("FluturasiViewer")"><b class="glyphicon glyphicon-print"></b> Tiparire</a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("FluturasiPDF")"><b class="glyphicon glyphicon-save-file"></b> Descarcare PDF</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div style="display: flex; margin: 5px;">
+                        <select id="filter-field" class="form-control" style="margin-right:5px">
+                            <option value="Nume">Nume</option>
+                            <option value="Prenume">Prenume</option>
+                            <option value="Functie">Functie</option>
+                        </select>
+                        <input type="text" id="search-input" style="margin-right:5px" class="form-control" placeholder="Cautare angajat">
+                        <button id="filter-clear" class="btn btn-primary">Clear</button>
+                    </div>
+
                 </div>
 
                 <div id="employee-table"></div>

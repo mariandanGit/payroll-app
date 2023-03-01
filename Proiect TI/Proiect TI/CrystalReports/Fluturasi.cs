@@ -16,14 +16,14 @@ namespace Proiect_TI.CrystalReports {
     using CrystalDecisions.CrystalReports.Engine;
     
     
-    public class FluturasiGlobal : ReportClass {
+    public class Fluturasi : ReportClass {
         
-        public FluturasiGlobal() {
+        public Fluturasi() {
         }
         
         public override string ResourceName {
             get {
-                return "FluturasiGlobal.rpt";
+                return "Fluturasi.rpt";
             }
             set {
                 // Do nothing
@@ -41,7 +41,7 @@ namespace Proiect_TI.CrystalReports {
         
         public override string FullResourceName {
             get {
-                return "Proiect_TI.CrystalReports.FluturasiGlobal.rpt";
+                return "Proiect_TI.CrystalReports.Fluturasi.rpt";
             }
             set {
                 // Do nothing
@@ -90,9 +90,9 @@ namespace Proiect_TI.CrystalReports {
     }
     
     [System.Drawing.ToolboxBitmapAttribute(typeof(CrystalDecisions.Shared.ExportOptions), "report.bmp")]
-    public class CachedFluturasiGlobal : Component, ICachedReport {
+    public class CachedFluturasi : Component, ICachedReport {
         
-        public CachedFluturasiGlobal() {
+        public CachedFluturasi() {
         }
         
         [Browsable(false)]
@@ -129,7 +129,7 @@ namespace Proiect_TI.CrystalReports {
         }
         
         public virtual CrystalDecisions.CrystalReports.Engine.ReportDocument CreateReport() {
-            FluturasiGlobal rpt = new FluturasiGlobal();
+            Fluturasi rpt = new Fluturasi();
             rpt.Site = this.Site;
             return rpt;
         }

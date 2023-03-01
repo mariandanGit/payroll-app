@@ -267,10 +267,10 @@
     <Compile Include="Controllers\DatabaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="CrystalReports\FluturasiGlobal.cs">
+    <Compile Include="CrystalReports\Fluturasi.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>FluturasiGlobal.rpt</DependentUpon>
+      <DependentUpon>Fluturasi.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CrystalReports\OracleDataSet.Designer.cs">
@@ -1218,9 +1218,9 @@
     <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CrystalReports\FluturasiGlobal.rpt">
+    <EmbeddedResource Include="CrystalReports\Fluturasi.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>FluturasiGlobal.cs</LastGenOutput>
+      <LastGenOutput>Fluturasi.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReports\StatDePlata.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

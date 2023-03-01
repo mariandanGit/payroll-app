@@ -99,24 +99,42 @@ var table = new Tabulator("#employee-table", {
         { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 150},
         { title: "Functie", field: "Functie", vertAlign: "middle", width: 150},        
         { title: "Salar de baza", field: "SalarBaza", vertAlign: "middle", bottomCalc:"sum" },
-        { title: "Spor", field: "Spor", vertAlign: "middle" },
-        { title: "Premii brute", field: "PremiiBrute", vertAlign: "middle" },
-        { title: "Total brut", field: "TotalBrut", vertAlign: "middle" },
-        { title: "Brut impozabil", field: "BrutImpozabil", vertAlign: "middle" },
-        { title: "Impozit", field: "Impozit", vertAlign: "middle" },
-        { title: "CAS", field: "Cas", vertAlign: "middle" },
-        { title: "CASS", field: "Cass", vertAlign: "middle" },
-        { title: "Retineri", field: "Retineri", vertAlign: "middle" },
+        { title: "Spor", field: "Spor", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Premii brute", field: "PremiiBrute", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Total brut", field: "TotalBrut", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Brut impozabil", field: "BrutImpozabil", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Impozit", field: "Impozit", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "CAS", field: "Cas", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "CASS", field: "Cass", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Retineri", field: "Retineri", vertAlign: "middle", bottomCalc: "sum" },
         { title: "Virat card", field: "ViratCard", vertAlign: "middle", bottomCalc: "sum" },
         {
             title: "Actiuni",
             vertAlign: "middle",
             formatter: function (cell, formatterParams, onRendered) {
 
+                var previewButton = document.createElement("a");
+                previewButton.classList.add("btn", "btn-success");
+                previewButton.style.marginRight = "5px";
+                previewButton.setAttribute('href', '/Home/FluturasiIndividualViewer?id=' + cell.getRow().getData().Id);
+                var previewB = document.createElement("b");
+                previewB.classList.add("glyphicon", "glyphicon-print");
+                previewButton.appendChild(previewB);
+
+                var saveButton = document.createElement("a");
+                saveButton.classList.add("btn", "btn-success");
+                saveButton.style.marginRight = "5px";
+                saveButton.setAttribute('href', '/Home/FluturasiIndividualPDF?id=' + cell.getRow().getData().Id);
+                var saveB = document.createElement("b");
+                saveB.classList.add("glyphicon", "glyphicon-save-file");
+                saveButton.appendChild(saveB);
+
                 var editButton = document.createElement("button");
                 editButton.classList.add("btn", "btn-primary");
                 editButton.style.marginRight = "5px";
-                editButton.innerHTML = "Editare";
+                var editB = document.createElement("b");
+                editB.classList.add("glyphicon", "glyphicon-pencil");
+                editButton.appendChild(editB);
                 editButton.addEventListener("click", function (e) {
                     var rowData = cell.getRow().getData();
 
@@ -133,7 +151,9 @@ var table = new Tabulator("#employee-table", {
                 var deleteButton = document.createElement("button");
                 deleteButton.classList.add("btn", "btn-danger");
                 deleteButton.style.marginRight
-                deleteButton.innerHTML = "Stergere";
+                var deleteB = document.createElement("b");
+                deleteB.classList.add("glyphicon", "glyphicon-trash");
+                deleteButton.appendChild(deleteB);
                 deleteButton.addEventListener("click", function (e) {
                     var row = cell.getRow();
                     if (row) {
@@ -154,6 +174,8 @@ var table = new Tabulator("#employee-table", {
                     }
                 });
                 var container = document.createElement("div");
+                container.appendChild(previewButton);
+                container.appendChild(saveButton);
                 container.appendChild(editButton);
                 container.appendChild(deleteButton);
 
@@ -162,14 +184,4 @@ var table = new Tabulator("#employee-table", {
             headerSort: false
         },
     ],
-    bottomCalcFormatter: function (cell) {
-        // get the column definition
-        var column = cell.getColumn().getDefinition();
-        // check if this is the first column
-        if (column.field === "Id") {
-            return "Total:";
-        }
-        // return the calculated value for other columns
-        return cell.getValue();
-    }
 });
