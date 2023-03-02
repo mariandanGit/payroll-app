@@ -1,4 +1,16 @@
-﻿function deleteRow(row) {
+﻿$(document).ready(function () {
+    setInterval(function () {
+        $.ajax({
+            type: "GET",
+            url: "/Home/GetServerTime",
+            success: function (data) {
+                $("#clock").html(data);
+            }
+        });
+    }, 1000);
+});
+
+function deleteRow(row) {
     if (row) {
         var id = row.getData().Id;
         if (confirm("Are you sure you want to delete this employee?")) {
@@ -98,16 +110,16 @@ var table = new Tabulator("#employee-table", {
         { title: "Nume", field: "Nume", vertAlign: "middle", width: 150 },
         { title: "Prenume", field: "Prenume", vertAlign: "middle", width: 150},
         { title: "Functie", field: "Functie", vertAlign: "middle", width: 150},        
-        { title: "Salar de baza", field: "SalarBaza", vertAlign: "middle", bottomCalc:"sum" },
-        { title: "Spor", field: "Spor", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Premii brute", field: "PremiiBrute", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Total brut", field: "TotalBrut", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Brut impozabil", field: "BrutImpozabil", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Impozit", field: "Impozit", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "CAS", field: "Cas", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "CASS", field: "Cass", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Retineri", field: "Retineri", vertAlign: "middle", bottomCalc: "sum" },
-        { title: "Virat card", field: "ViratCard", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Salar de baza", field: "SalarBaza", sorter: "number", vertAlign: "middle", bottomCalc:"sum" },
+        { title: "Spor", field: "Spor", vertAlign: "middle", sorter: "number", bottomCalc: "sum" },
+        { title: "Premii brute", field: "PremiiBrute", sorter: "number", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Total brut", field: "TotalBrut", sorter: "number", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Brut impozabil", field: "BrutImpozabil", sorter: "number", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "Impozit", field: "Impozit", sorter: "number", vertAlign: "middle", bottomCalc: "sum" },
+        { title: "CAS", field: "Cas", vertAlign: "middle", sorter: "number", bottomCalc: "sum" },
+        { title: "CASS", field: "Cass", vertAlign: "middle", sorter: "number", bottomCalc: "sum" },
+        { title: "Retineri", field: "Retineri", vertAlign: "middle", sorter: "number", bottomCalc: "sum" },
+        { title: "Virat card", field: "ViratCard", vertAlign: "middle", sorter: "number", bottomCalc: "sum" },
         {
             title: "Actiuni",
             vertAlign: "middle",

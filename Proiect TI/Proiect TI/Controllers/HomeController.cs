@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using Oracle.ManagedDataAccess.Client;
 using Proiect_TI.Models;
 using CrystalDecisions.CrystalReports.Engine;
+using System.IO;
+
 
 namespace Proiect_TI.Controllers
 {
@@ -22,11 +21,12 @@ namespace Proiect_TI.Controllers
             var currentTime = DateTime.Now.ToString("HH:mm:ss");
             return Content(currentTime);
         }
-        public ActionResult AdaugareAngajati(bool ? success)
+        public ActionResult AdaugareAngajati(EmployeeViewModel employee, bool ? success)
         {
             ViewBag.Success = success;
-            return View();
+            return View(employee);
         }
+
         public ActionResult GestionareAngajati(bool? success, string message)
         {
             ViewBag.Success = success;

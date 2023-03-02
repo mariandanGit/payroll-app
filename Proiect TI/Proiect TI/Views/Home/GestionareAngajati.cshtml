@@ -102,28 +102,35 @@
                                                     <img id="employee-image" src="" style="width:150px; height:150px; object-fit:cover; border-radius:50%" alt="Employee image" />
                                                     @Html.TextBoxFor(model => model.Poza, new { type = "file" })
                                                 </div>
-                                                <div class="container">
-                                                    <div class="form-group">
-                                                        <label>Nr. Crt</label>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Id, "Nr. Crt", htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.TextBoxFor(model => model.Id, new { id = "employee-modal-id", @class = "form-control", @Readonly = "readonly" })
                                                     </div>
                                                 </div>
-                                                <div class="container">
-                                                    <div class="form-group">
-                                                        <label>Nume</label>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.TextBoxFor(model => model.Nume, new { id = "employee-modal-nume", @class = "form-control" })
+                                                        <p id="NumeError" style="color:darkred"></p>
                                                     </div>
                                                 </div>
-                                                <div class="container">
-                                                    <div class="form-group">
-                                                        <label>Prenume</label>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Prenume, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.TextBoxFor(model => model.Prenume, new { id = "employee-modal-prenume", @class = "form-control" })
+                                                        <p id="PrenumeError" style="color:darkred"></p>
                                                     </div>
                                                 </div>
-                                                <div class="container">
-                                                    <div class="form-group">
-                                                        <label>Functie</label>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.Functie, htmlAttributes: new { @class = "control-label col-md-4" })
+                                                    <div class="col-md-8">
                                                         @Html.TextBoxFor(model => model.Functie, new { id = "employee-modal-functie", @class = "form-control" })
+                                                        <p id="FunctieError" style="color:darkred"></p>
                                                     </div>
                                                 </div>
                                             </div>

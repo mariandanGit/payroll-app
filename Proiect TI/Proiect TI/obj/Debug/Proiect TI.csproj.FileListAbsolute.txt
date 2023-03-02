@@ -131,5 +131,3 @@ C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\Crys
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\log4net.dll
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\log4net.xml
 C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\CrystalDecisions.ReportSource.dll
-C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\FluentValidation.dll
-C:\Users\danma\Desktop\Master an 1\TI\payroll-app\Proiect TI\Proiect TI\bin\FluentValidation.xml

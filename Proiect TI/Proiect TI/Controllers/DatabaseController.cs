@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using System.Data;
 using Proiect_TI.Models;
@@ -75,11 +73,13 @@ namespace Proiect_TI.Controllers
             return new EmptyResult();
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddEmployees(EmployeeViewModel employee)
         {
-            var validator = new EmployeeValidator();
-            var result = validator.Validate(employee);
-
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("AdaugareAngajati", "Home");
+            }
             try
             {
                 string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";
@@ -122,6 +122,10 @@ namespace Proiect_TI.Controllers
         [HttpPost]
         public ActionResult UpdateData(EmployeeViewModel employee)
         {
+            if (!ModelState.IsValid)
+            {
+                return RedirectToAction("GestionareAngajati", "Home");
+            }
             try
             {
                 string connectionString = "DATA SOURCE=localhost:1521/XE;PASSWORD=STUDENT;PERSIST SECURITY INFO=True;USER ID = STUDENT";

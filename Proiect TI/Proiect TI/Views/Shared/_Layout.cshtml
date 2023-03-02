@@ -51,17 +51,105 @@
     @Scripts.Render("~/bundles/table")
     @RenderSection("scripts", required: false)
     <script>
-                            $(document).ready(function() {
-                                setInterval(function() {
-                                    $.ajax({
-                                        type: "GET",
-                                        url: "@Url.Action("GetServerTime", "Home")",
-                                        success: function (data) {
-                                            $("#clock").html(data);
-                                        }
-                                    });
-                                }, 1000);
-                            });
+        $(document).ready(function () {
+            $('#addEmployeeForm').submit(function (event) {
+                event.preventDefault();
+
+                var isValid = true;
+                if ($('#Nume').val().trim() == '') {
+                    $('#Nume').closest('.form-group').addClass('has-error');
+                    $('#NumeError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                    $('#Nume').closest('.form-group').removeClass('has-error');
+                    $('#NumeError').text('');
+                }
+
+                if ($('#Prenume').val().trim() == '') {
+                    $('#Prenume').closest('.form-group').addClass('has-error');
+                    $('#PrenumeError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                    $('#Prenume').closest('.form-group').removeClass('has-error');
+                    $('#PrenumeError').text('');
+                }
+
+                if ($('#Functie').val().trim() == '') {
+                    $('#Functie').closest('.form-group').addClass('has-error');
+                    $('#FunctieError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                    $('#Functie').closest('.form-group').removeClass('has-error');
+                    $('#FunctieError').text('');
+                }
+
+                if ($('#SalarBaza').val().trim() == '') {
+                    $('#SalarBaza').closest('.form-group').addClass('has-error');
+                    $('#SalarBazaError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                    $('#SalarBaza').closest('.form-group').removeClass('has-error');
+                    $('#SalarBazaError').text('');
+                }
+
+                if (isValid) {
+                    this.submit();
+                }
+            });
+        });
+        $('#employee-form').submit(function (event) {
+                event.preventDefault();
+
+                var isValid = true;
+
+                if ($('#employee-modal-nume').val().trim() == '') {
+                    $('#employee-modal-nume').closest('.form-group').addClass('has-error');
+                    $('#NumeError').text('Camp obligatoriu');
+                        isValid = false;
+                    }
+                else {
+                    $('#employee-modal-nume').closest('.form-group').removeClass('has-error');
+                    $('#NumeError').text('');
+                }
+
+            if ($('#employee-modal-prenume').val().trim() == '') {
+                $('#employee-modal-prenume').closest('.form-group').addClass('has-error');
+                    $('#PrenumeError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                $('#employee-modal-prenume').closest('.form-group').removeClass('has-error');
+                    $('#PrenumeError').text('');
+                }
+
+            if ($('#employee-modal-functie').val().trim() == '') {
+                $('#employee-modal-functie').closest('.form-group').addClass('has-error');
+                    $('#FunctieError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                $('#employee-modal-functie').closest('.form-group').removeClass('has-error');
+                    $('#FunctieError').text('');
+                }
+
+            if ($('#employee-modal-salar').val().trim() == '') {
+                $('#employee-modal-salar').closest('.form-group').addClass('has-error');
+                    $('#SalarBazaError').text('Camp obligatoriu');
+                    isValid = false;
+                }
+                else {
+                $('#employee-modal-salar').closest('.form-group').removeClass('has-error');
+                    $('#SalarBazaError').text('');
+                }
+
+                if (isValid) {
+                    this.submit();
+                }
+            });
     </script>
 </body>
 </html>

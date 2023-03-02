@@ -1,7 +1,7 @@
 ﻿@model Proiect_TI.Models.EmployeeViewModel
 <h2>Adaugare angajati</h2>
 <span style="display:flex;">
-    <b class="glyphicon glyphicon-info-sign" style="font-size: 25px; margin-right: 10px; color: #337ab7;"></b>
+    <b class="glyphicon glyphicon-info-sign" style="font-size: 20px; margin-right: 10px; color: #337ab7;"></b>
     <p>Pentru adaugarea unui angajat este necesara completarea tuturor casetelor. Daca exista o poza de profil, aceasta se poate incarca.</p>
 </span>
 <div class="container-fluid" style=" border: solid 1px #dde0de; border-radius: 10px; padding: 30px;">
@@ -26,48 +26,68 @@
                     </button>
                 </div>
             }
-
-            @using (Html.BeginForm("AddEmployees", "Database", FormMethod.Post, htmlAttributes: new { style = "display:flex; flex-direction:column; align-items:center", enctype = "multipart/form-data" }))
+            @using (Html.BeginForm("AddEmployees", "Database", FormMethod.Post, htmlAttributes: new { id = "addEmployeeForm", style = "display:flex; flex-direction:column; align-items:center", enctype = "multipart/form-data" }))
             {
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Nume, new { @class = "form-control", placeholder = "Ex: Popescu" })
-                </div>
-                @Html.ValidationMessageFor(model => model.Nume, "", new { @class = "text-danger" })
+                @Html.AntiForgeryToken()
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Prenume, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Prenume, new { @class = "form-control", placeholder = "Ex: Andrei" })
-                </div>
-
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Functie, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Functie, new { @class = "form-control", placeholder = "Ex: Programator" })
+                    @Html.LabelFor(model => model.Nume, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Nume, new { @class = "form-control", placeholder = "Ex: Popescu" })
+                        <p id="NumeError" style="color:darkred"></p>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.SalarBaza, "Salar de baza", htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.SalarBaza, new { @class = "form-control", placeholder = "Ex: 3000" })
+                    @Html.LabelFor(model => model.Prenume, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Prenume, new { @class = "form-control", placeholder = "Ex: Andrei" })
+                        <p id="PrenumeError" style="color:darkred"></p>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Spor, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Spor, new { @class = "form-control", placeholder = "0" })
+                    @Html.LabelFor(model => model.Functie, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Functie, new { @class = "form-control", placeholder = "Ex: Programator" })
+                        <p id="FunctieError" style="color:darkred"></p>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.PremiiBrute, "Premii brute", htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.PremiiBrute, new { @class = "form-control", placeholder = "0" })
+                    @Html.LabelFor(model => model.SalarBaza, "Salar de baza", htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.SalarBaza, new { @class = "form-control", type = "number", min = 0 })
+                        <p id="SalarBazaError" style="color:darkred"></p>
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Retineri, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Retineri, new { @class = "form-control", placeholder = "0" })
+                    @Html.LabelFor(model => model.Spor, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Spor, new { @class = "form-control", type = "number", placeholder = "0", min = 0 })
+                    </div>
                 </div>
 
                 <div class="form-group">
-                    @Html.LabelFor(model => model.Poza, htmlAttributes: new { @class = "control-label" })
-                    @Html.TextBoxFor(model => model.Poza, new { type = "file" })
+                    @Html.LabelFor(model => model.PremiiBrute, "Premii brute", htmlAttributes: new { @class = "control-label  col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.PremiiBrute, new { @class = "form-control", type = "number", placeholder = "0", min = 0 })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Retineri, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Retineri, new { @class = "form-control", type = "number", placeholder = "0", min = 0 })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Poza, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-8">
+                        @Html.TextBoxFor(model => model.Poza, new { type = "file" })
+                    </div>
                 </div>
 
                 <div class="form-group" style="justify-content:center">
@@ -80,4 +100,5 @@
         </div>
     </div>
 </div>
+
 
