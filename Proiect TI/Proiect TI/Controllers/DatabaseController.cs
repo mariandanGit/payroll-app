@@ -30,16 +30,16 @@ namespace Proiect_TI.Controllers
                                 Nume = reader.GetString(reader.GetOrdinal("NUME")),
                                 Prenume = reader.GetString(reader.GetOrdinal("PRENUME")),
                                 Functie = reader.GetString(reader.GetOrdinal("FUNCTIE")),
-                                SalarBaza = reader.GetDecimal(reader.GetOrdinal("SALAR_BAZA")),
-                                Spor = reader.GetDecimal(reader.GetOrdinal("SPOR")),
-                                PremiiBrute = reader.GetDecimal(reader.GetOrdinal("PREMII_BRUTE")),
-                                TotalBrut = reader.GetDecimal(reader.GetOrdinal("TOTAL_BRUT")),
-                                BrutImpozabil = reader.GetDecimal(reader.GetOrdinal("BRUT_IMPOZABIL")),
-                                Impozit = reader.GetDecimal(reader.GetOrdinal("IMPOZIT")),
-                                Cas = reader.GetDecimal(reader.GetOrdinal("CAS")),
-                                Cass = reader.GetDecimal(reader.GetOrdinal("CASS")),
-                                Retineri = reader.GetDecimal(reader.GetOrdinal("RETINERI")),
-                                ViratCard = reader.GetDecimal(reader.GetOrdinal("VIRAT_CARD"))                            
+                                SalarBaza = reader.GetInt32(reader.GetOrdinal("SALAR_BAZA")),
+                                Spor = reader.GetInt32(reader.GetOrdinal("SPOR")),
+                                PremiiBrute = reader.GetInt32(reader.GetOrdinal("PREMII_BRUTE")),
+                                TotalBrut = reader.GetInt32(reader.GetOrdinal("TOTAL_BRUT")),
+                                BrutImpozabil = reader.GetInt32(reader.GetOrdinal("BRUT_IMPOZABIL")),
+                                Impozit = reader.GetInt32(reader.GetOrdinal("IMPOZIT")),
+                                Cas = reader.GetInt32(reader.GetOrdinal("CAS")),
+                                Cass = reader.GetInt32(reader.GetOrdinal("CASS")),
+                                Retineri = reader.GetInt32(reader.GetOrdinal("RETINERI")),
+                                ViratCard = reader.GetInt32(reader.GetOrdinal("VIRAT_CARD"))                            
                             };
                             employees.Add(employee);
                         }
@@ -91,10 +91,10 @@ namespace Proiect_TI.Controllers
                         command.Parameters.Add("Nume", OracleDbType.Varchar2).Value = employee.Nume;
                         command.Parameters.Add("Prenume", OracleDbType.Varchar2).Value = employee.Prenume;
                         command.Parameters.Add("Functie", OracleDbType.Varchar2).Value = employee.Functie;
-                        command.Parameters.Add("SalarBaza", OracleDbType.Decimal).Value = employee.SalarBaza;
-                        command.Parameters.Add("Spor", OracleDbType.Decimal).Value = employee.Spor;
-                        command.Parameters.Add("PremiiBrute", OracleDbType.Decimal).Value = employee.PremiiBrute;
-                        command.Parameters.Add("Retineri", OracleDbType.Decimal).Value = employee.Retineri;
+                        command.Parameters.Add("SalarBaza", OracleDbType.Int32).Value = employee.SalarBaza;
+                        command.Parameters.Add("Spor", OracleDbType.Int32).Value = employee.Spor;
+                        command.Parameters.Add("PremiiBrute", OracleDbType.Int32).Value = employee.PremiiBrute;
+                        command.Parameters.Add("Retineri", OracleDbType.Int32).Value = employee.Retineri;
                         if (employee.Poza != null && employee.Poza.ContentLength > 0)
                         {
                             byte[] bytes;
@@ -137,10 +137,10 @@ namespace Proiect_TI.Controllers
                         command.Parameters.Add("Nume", OracleDbType.Varchar2).Value = employee.Nume;
                         command.Parameters.Add("Prenume", OracleDbType.Varchar2).Value = employee.Prenume;
                         command.Parameters.Add("Functie", OracleDbType.Varchar2).Value = employee.Functie;
-                        command.Parameters.Add("SalarBaza", OracleDbType.Decimal).Value = employee.SalarBaza;
-                        command.Parameters.Add("Spor", OracleDbType.Decimal).Value = employee.Spor;
-                        command.Parameters.Add("PremiiBrute", OracleDbType.Decimal).Value = employee.PremiiBrute;
-                        command.Parameters.Add("Retineri", OracleDbType.Decimal).Value = employee.Retineri;
+                        command.Parameters.Add("SalarBaza", OracleDbType.Int32).Value = employee.SalarBaza;
+                        command.Parameters.Add("Spor", OracleDbType.Int32).Value = employee.Spor;
+                        command.Parameters.Add("PremiiBrute", OracleDbType.Int32).Value = employee.PremiiBrute;
+                        command.Parameters.Add("Retineri", OracleDbType.Int32).Value = employee.Retineri;
                         command.Parameters.Add("Id", OracleDbType.Int32).Value = employee.Id;
                         command.ExecuteNonQuery();
                     }
