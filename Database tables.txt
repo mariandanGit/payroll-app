@@ -1,0 +1,89 @@
+CREATE TABLE salariati(
+id INT PRIMARY KEY,
+nume VARCHAR(40) NOT NULL,
+prenume VARCHAR(40) NOT NULL,
+functie VARCHAR(50) NOT NULL,
+salar_baza INT NOT NULL,
+spor INT DEFAULT 0,
+premii_brute INT DEFAULT 0,
+total_brut INT,
+brut_impozabil INT,
+impozit INT,
+cas INT,
+cass INT,
+retineri INT DEFAULT 0,
+virat_card INT,
+poza BLOB
+);
+
+----------------------------------------------------------------------------------------------------------
+
+CREATE SEQUENCE salariati_seq START WITH 1;
+
+CREATE OR REPLACE TRIGGER salariati_tr
+BEFORE INSERT ON salariati
+FOR EACH ROW
+BEGIN
+SELECT salariati_seq.NEXTVAL
+INTO :NEW.id
+FROM DUAL;
+END;
+/
+
+CREATE OR replace TRIGGER calcul_salariu
+  BEFORE INSERT OR UPDATE ON salariati
+  FOR EACH ROW
+DECLARE
+    x FLOAT;
+BEGIN
+    :new.total_brut := :new.salar_baza * ( 1 + :new.spor / 100 ) +
+    :new.premii_brute;
+
+    SELECT cas
+    INTO   x
+    FROM   procente;
+
+    :new.cas := :new.total_brut * x;
+
+    SELECT cass
+    INTO   x
+    FROM   procente;
+
+    :new.cass := :new.total_brut * x;
+
+    :new.brut_impozabil := :new.total_brut - :new.cas - :new.cass;
+
+    SELECT impozit
+    INTO   x
+    FROM   procente;
+
+    :new.impozit := :new.brut_impozabil * x;
+
+    :new.virat_card := :new.total_brut - :new.impozit - :new.cas - :new.cass -
+                       :new.retineri;
+END;
+
+/ 
+
+----------------------------------------------------------------------------------------------------------
+
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Ionescu', 'Alexandru', 'Programator', 6000);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Popa', 'Victor', 'Administrator baze de date', 7500);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Radu', 'Andrei', 'Inginer software', 8000);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Stoica', 'Cristian', 'Testare software', 5500);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Dumitru', 'Ionut', 'Arhitect software', 9000);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Popescu', 'Andreea', 'Programator', 5500);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Ionescu', 'Maria', 'Administrator baze de date', 7000);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Dumitrescu', 'Elena', 'Inginer software', 7500);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Cristea', 'Ana', 'Testare software', 5000);
+INSERT INTO salariati (nume, prenume, functie, salar_baza) VALUES ('Radulescu', 'Ioana', 'Arhitect software', 8500);
+
+----------------------------------------------------------------------------------------------------------
+
+CREATE TABLE procente(
+parola VARCHAR(50),
+cas FLOAT DEFAULT 0.25,
+cass FLOAT DEFAULT 0.1,
+impozit FLOAT DEFAULT 0.1);
+
+INSERT INTO procente (parola) VALUES('parola');
